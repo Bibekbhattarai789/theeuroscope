@@ -1,85 +1,55 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://euroscope.site/</loc>
-    <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://euroscope.site/about</loc>
-    <priority>0.5</priority>
   </url>
-
   <url>
     <loc>https://euroscope.site/contact</loc>
-    <priority>0.5</priority>
   </url>
-
   <url>
     <loc>https://euroscope.site/privacy</loc>
-    <priority>0.5</priority>
   </url>
-
   <url>
     <loc>https://euroscope.site/editorial-policy</loc>
-    <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://euroscope.site/articles/find-a-job-in-europe</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/find-a-job-in-europe</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/european-countries-for-international-students</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/european-countries-for-international-students</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/cost-of-living-in-europe</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/cost-of-living-in-europe</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/modern-european-football</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/modern-european-football</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/european-cricket-guide</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/european-cricket-guide</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/pubg-mobile-esports-europe</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/pubg-mobile-esports-europe</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/pubg-mobile-tournament-formats</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/pubg-mobile-tournament-formats</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/grow-a-small-gaming-channel</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/grow-a-small-gaming-channel</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/gaming-tools-for-streamers</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/gaming-tools-for-streamers</loc>
   </url>
-
   <url>
-    <loc>https://euroscope.site/articles/moving-to-europe-checklist</loc>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/moving-to-europe-checklist</loc>
   </url>
-
   <url>
-    <loc>https://www.euroscope.site/article/eu-entry-exit-system-2026</loc>
-    <lastmod>2026-11-14</lastmod>
-    <priority>0.8</priority>
+    <loc>https://euroscope.site/article/eu-entry-exit-system-2026</loc>
   </url>
 
 </urlset>
