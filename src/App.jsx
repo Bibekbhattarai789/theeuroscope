@@ -17,7 +17,6 @@ import Seo from "./components/Seo";
 function BrandLogo() {
   return (
     <Link className="logo brand-logo" to="/" aria-label="EuroScope home">
-      <span className="brand-symbol">E</span>
       <span className="brand-name">
         Euro<span>Scope</span>
       </span>
@@ -60,6 +59,7 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Explore</h3>
+
           <nav className="footer-links" aria-label="Explore links">
             <Link to="/#articles">Europe guides</Link>
             <Link to="/#articles">Sports</Link>
@@ -69,6 +69,7 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Information</h3>
+
           <nav className="footer-links" aria-label="Information links">
             <Link to="/about">About us</Link>
             <Link to="/contact">Contact</Link>
@@ -82,6 +83,7 @@ function Footer() {
         <p>
           © {new Date().getFullYear()} EuroScope. All rights reserved.
         </p>
+
         <p>Made for curious minds across Europe.</p>
       </div>
     </footer>
@@ -95,15 +97,36 @@ function SiteLayout() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/article/:slug" element={<ArticlePage />} />
-        <Route path="/about" element={<InfoPage page="about" />} />
-        <Route path="/contact" element={<InfoPage page="contact" />} />
-        <Route path="/privacy" element={<InfoPage page="privacy" />} />
+
+        <Route
+          path="/article/:slug"
+          element={<ArticlePage />}
+        />
+
+        <Route
+          path="/about"
+          element={<InfoPage page="about" />}
+        />
+
+        <Route
+          path="/contact"
+          element={<InfoPage page="contact" />}
+        />
+
+        <Route
+          path="/privacy"
+          element={<InfoPage page="privacy" />}
+        />
+
         <Route
           path="/editorial-policy"
           element={<InfoPage page="editorial" />}
         />
-        <Route path="*" element={<NotFoundPage />} />
+
+        <Route
+          path="*"
+          element={<NotFoundPage />}
+        />
       </Routes>
 
       <Footer />
@@ -128,7 +151,8 @@ function HomePage() {
 
     return articles.filter((article) => {
       const matchesCategory =
-        category === "All" || article.category === category;
+        category === "All" ||
+        article.category === category;
 
       const matchesSearch =
         !searchText ||
@@ -147,7 +171,9 @@ function HomePage() {
       <main>
         <section className="hero container">
           <div className="hero-content">
-            <p className="eyebrow">Europe · Sports · Gaming</p>
+            <p className="eyebrow">
+              Europe · Sports · Gaming
+            </p>
 
             <h1>Europe, in one place.</h1>
 
@@ -179,10 +205,16 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="container articles-section" id="articles">
+        <section
+          className="container articles-section"
+          id="articles"
+        >
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Discover something useful</p>
+              <p className="eyebrow">
+                Discover something useful
+              </p>
+
               <h2>Latest articles</h2>
             </div>
 
@@ -214,13 +246,19 @@ function HomePage() {
           {filteredArticles.length > 0 ? (
             <div className="articles-grid">
               {filteredArticles.map((article) => (
-                <ArticleCard key={article.slug} article={article} />
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                />
               ))}
             </div>
           ) : (
             <div className="empty-state">
               <h3>No articles found</h3>
-              <p>Try another search term or category.</p>
+
+              <p>
+                Try another search term or category.
+              </p>
 
               <button
                 type="button"
@@ -235,18 +273,26 @@ function HomePage() {
           )}
         </section>
 
-        <section className="newsletter-section" id="newsletter">
+        <section
+          className="newsletter-section"
+          id="newsletter"
+        >
           <div className="container newsletter-inner">
             <div>
               <p className="eyebrow">Stay informed</p>
+
               <h2>Get the best of EuroScope.</h2>
+
               <p>
                 Follow our latest European guides, sports analysis
                 and gaming stories.
               </p>
             </div>
 
-            <Link className="primary-button" to="/contact">
+            <Link
+              className="primary-button"
+              to="/contact"
+            >
               Contact EuroScope
             </Link>
           </div>
@@ -270,7 +316,10 @@ function ScrollToTop() {
         });
       });
     } else {
-      window.scrollTo({ top: 0, behavior: "auto" });
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     }
   }, [pathname, hash]);
 
@@ -289,8 +338,12 @@ function NotFoundPage() {
       <main className="info-page">
         <div className="container info-page-inner">
           <div className="info-page-card">
-            <p className="eyebrow">404 · Page not found</p>
+            <p className="eyebrow">
+              404 · Page not found
+            </p>
+
             <h1>We couldn't find that page.</h1>
+
             <p>
               The page may have moved, or the link may be incorrect.
               You can return to EuroScope and continue exploring.
