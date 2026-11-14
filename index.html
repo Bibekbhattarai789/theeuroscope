@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,8 +9,25 @@
       name="description"
       content="Explore practical European guides, sports analysis and gaming stories on EuroScope."
     />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YBXHEMJTHQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-YBXHEMJTHQ");
+    </script>
+    <!-- End Google Analytics -->
+
     <title>EuroScope | Europe, Sports &amp; Gaming</title>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
