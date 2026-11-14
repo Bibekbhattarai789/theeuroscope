@@ -1,6 +1,11 @@
 
 import { useEffect } from "react";
 
+const SITE_URL = "https://euroscope.site";
+const SITE_NAME = "EuroScope";
+const DEFAULT_DESCRIPTION =
+  "Explore practical European guides, sports analysis and gaming stories on EuroScope.";
+
 function Seo({
   title,
   description,
@@ -9,24 +14,26 @@ function Seo({
 }) {
   useEffect(() => {
     const pageTitle = title
-      ? `${title} | EuroScope`
+      ? `${title} | ${SITE_NAME}`
       : "EuroScope | Europe, Sports & Gaming";
 
     const pageDescription =
-      description ||
-      "Explore practical European guides, sports analysis and gaming stories on EuroScope.";
+      description || DEFAULT_DESCRIPTION;
 
-    const pageUrl =
-      `${window.location.origin}${window.location.pathname}`;
+    // Always use the preferred non-www domain
+    const pageUrl = `${SITE_URL}${window.location.pathname}`;
 
     const pageImage = article?.image
-      ? new URL(article.image, window.location.origin).href
-      : `${window.location.origin}/og-image.png`;
+      ? new URL(article.image, SITE_URL).href
+      : `${SITE_URL}/og-image.png`;
 
-    // Browser title
+    const authorName =
+      article?.author || "EuroScope Editorial Team";
+
+    // Update browser title
     document.title = pageTitle;
 
-    // Create or update metadata
+    // Create or update meta tags
     function setMeta(attribute, key, content) {
       let element = document.head.querySelector(
         `meta[${attribute}="${key}"]`
@@ -41,7 +48,7 @@ function Seo({
       element.setAttribute("content", content);
     }
 
-    // SEO description and indexing
+    // Basic SEO metadata
     setMeta("name", "description", pageDescription);
 
     setMeta(
@@ -56,7 +63,23 @@ function Seo({
     setMeta("property", "og:type", article ? "article" : "website");
     setMeta("property", "og:url", pageUrl);
     setMeta("property", "og:image", pageImage);
-    setMeta("property", "og:site_name", "EuroScope");
+    setMeta("property", "og:site_name", SITE_NAME);
+
+    if (article?.publishedAt) {
+      setMeta(
+        "property",
+        "article:published_time",
+        new Date(article.publishedAt).toISOString()
+      );
+    }
+
+    if (article?.updatedAt) {
+      setMeta(
+        "property",
+        "article:modified_time",
+        new Date(article.updatedAt).toISOString()
+      );
+    }
 
     // Twitter / X metadata
     setMeta("name", "twitter:card", "summary_large_image");
@@ -91,17 +114,34 @@ function Seo({
         image: [pageImage],
         author: {
           "@type": "Organization",
-          name: "EuroScope Editorial Team",
+          name: authorName,
         },
         publisher: {
           "@type": "Organization",
-          name: "EuroScope",
+          name: SITE_NAME,
+          url: SITE_URL,
         },
         mainEntityOfPage: {
           "@type": "WebPage",
           "@id": pageUrl,
         },
+        url: pageUrl,
+        inLanguage: "en",
       };
+
+      if (article.publishedAt) {
+        articleSchema.datePublished = article.publishedAt;
+      }
+
+      if (article.updatedAt) {
+        articleSchema.dateModified = article.updatedAt;
+      } else if (article.publishedAt) {
+        articleSchema.dateModified = article.publishedAt;
+      }
+
+      if (article.category) {
+        articleSchema.articleSection = article.category;
+      }
 
       if (!schemaScript) {
         schemaScript = document.createElement("script");

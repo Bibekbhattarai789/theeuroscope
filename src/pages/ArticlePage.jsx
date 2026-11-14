@@ -4,6 +4,21 @@ import articles from "../data/articles";
 import Seo from "../components/Seo";
 import ArticleCard from "../components/ArticleCard";
 
+function formatDate(date) {
+  if (!date) return null;
+
+  const parsedDate = new Date(date);
+
+  if (Number.isNaN(parsedDate.getTime())) return null;
+
+  return parsedDate.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 function ArticlePage() {
   const { slug } = useParams();
 
@@ -44,6 +59,10 @@ function ArticlePage() {
     )
     .slice(0, 3);
 
+  const author = article.author || "EuroScope Editorial Team";
+  const publishedDate = formatDate(article.publishedAt);
+  const updatedDate = formatDate(article.updatedAt);
+
   return (
     <main className="reading article-reading">
       <Seo
@@ -65,6 +84,28 @@ function ArticlePage() {
 
       <p className="intro">{article.description}</p>
 
+      <div className="byline">
+        Written by <strong>{author}</strong>
+
+        {publishedDate && (
+          <span>
+            {" "}· Published{" "}
+            <time dateTime={article.publishedAt}>
+              {publishedDate}
+            </time>
+          </span>
+        )}
+
+        {updatedDate && updatedDate !== publishedDate && (
+          <span>
+            {" "}· Updated{" "}
+            <time dateTime={article.updatedAt}>
+              {updatedDate}
+            </time>
+          </span>
+        )}
+      </div>
+
       {article.image && (
         <figure className="article-featured-image">
           <img
@@ -74,11 +115,6 @@ function ArticlePage() {
           />
         </figure>
       )}
-
-      <div className="byline">
-        Written by the{" "}
-        <strong>EuroScope Editorial Team</strong>
-      </div>
 
       <div className="article-body">
         {article.sections.map((section, index) => (
