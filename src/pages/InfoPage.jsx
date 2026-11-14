@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 
+const CONTACT_EMAIL = "euroscope21@gmail.com";
+
 const pages = {
   about: {
     label: "Who we are",
@@ -39,46 +41,133 @@ const pages = {
     title: "Contact EuroScope",
     intro:
       "Have a question, article suggestion, correction, or collaboration idea? Send us a message. We'd love to hear from you.",
-    sections: [],
+    sections: [
+      {
+        heading: "Email",
+        paragraphs: [
+          "You can also contact EuroScope directly at euroscope21@gmail.com.",
+          "For corrections, please include the article title and the information you believe needs updating.",
+        ],
+      },
+    ],
   },
 
   privacy: {
     label: "Your information",
     title: "Privacy Policy",
     intro:
-      "EuroScope respects visitor privacy. This policy should be reviewed and updated to reflect the services and data practices used by the live website.",
+      "This Privacy Policy explains how EuroScope collects, uses, stores and shares information when you visit our website or contact us. We aim to handle personal information responsibly and transparently.",
     sections: [
       {
-        heading: "Information we receive",
+        heading: "1. Website owner and data controller",
         paragraphs: [
-          "When you contact us, we may receive your name, email address, subject, and message. Please do not include passwords, payment details, or other sensitive information in your message.",
-          "Our hosting provider and contact-form provider may also process technical information needed to deliver and secure their services.",
+          "Website: EuroScope — https://www.euroscope.site",
+          "Website owner and data controller: Bibek Bhattarai, the individual operating EuroScope.",
+          "EuroScope is an independently operated website and is not presented as a registered company.",
+          "Privacy contact email: euroscope21@gmail.com.",
+          "For privacy questions or requests concerning your personal information, email us at euroscope21@gmail.com.",
         ],
       },
       {
-        heading: "How information is used",
+        heading: "2. Information we collect",
         paragraphs: [
-          "Information submitted through our contact form is used to receive, review, and respond to enquiries, corrections, and collaboration requests.",
-          "The form uses a third-party service to deliver messages. That provider may process submitted information under its own privacy policy and terms.",
+          "Information you provide: When you use our Contact page, we may receive your name, email address, subject and message. Please do not send passwords, payment details or other sensitive personal information through the form.",
+          "Technical and usage information: When you visit EuroScope, our hosting, analytics and other website services may process information such as your browser type, device information, approximate location, pages visited, referring website and technical request information. The information collected depends on the services enabled and your privacy choices.",
+          "Cookies and similar technologies: Our website and third-party services may use cookies, identifiers and similar technologies to support website functionality, measure traffic, remember privacy choices and, where enabled and permitted, provide advertising.",
         ],
       },
       {
-        heading: "Cookies and third parties",
+        heading: "3. How we use information",
         paragraphs: [
-          "Cookies and third-party services depend on the features enabled on our website. If analytics, advertising, or additional services are introduced, this policy should be updated to describe them accurately.",
+          "We use information submitted through our Contact page to receive and respond to questions, feedback, correction requests and collaboration enquiries.",
+          "We use website usage information to understand how visitors use EuroScope, measure website performance, improve our content and maintain the security and operation of the website.",
+          "Where advertising is enabled, information may also be processed to provide, measure and improve advertising in accordance with applicable privacy requirements and the choices visitors make.",
         ],
       },
       {
-        heading: "Retention and your rights",
+        heading: "4. Google Analytics",
         paragraphs: [
-          "We should retain personal information only for as long as reasonably necessary for its purpose or as required by law. Depending on applicable data protection laws, you may have rights to access, correct, or request deletion of your personal data.",
-          "Visitors in the European Economic Area may have rights under the GDPR where applicable. You can contact us with privacy questions using the contact form on this website.",
+          "EuroScope uses Google Analytics 4, a website analytics service provided by Google, to understand website traffic and how visitors interact with our pages.",
+          "Google Analytics may use cookies and similar technologies to collect usage and device information. This information helps us understand visitor numbers, popular pages and general website performance.",
+          "Google processes information under its own privacy terms. You can learn more at https://policies.google.com/privacy and https://support.google.com/analytics/answer/6004245.",
         ],
       },
       {
-        heading: "Policy updates",
+        heading: "5. Google AdSense and advertising",
         paragraphs: [
-          "We may update this policy when the website or its services change. Before publication, the website owner should confirm the actual data handling practices and add any required legal details.",
+          "EuroScope has integrated Google AdSense and may display advertisements if the website is approved and advertising is enabled.",
+          "Google and its advertising partners may use cookies, advertising identifiers and other technologies to store or access information on your device, deliver advertisements, measure advertising performance and help prevent fraud. The information processed and the types of advertising shown may depend on your location, privacy choices and the advertising settings available.",
+          "Where required, advertising-related processing is subject to the consent choices presented through Google's European regulations consent message. You can use the consent message or available privacy settings to review or change your choices.",
+          "For more information about how Google uses information for advertising, visit https://policies.google.com/technologies/ads and https://policies.google.com/privacy.",
+        ],
+      },
+      {
+        heading: "6. Cookies and consent choices",
+        paragraphs: [
+          "Cookies are small files stored on your device. Similar technologies can also store or access information on your device.",
+          "We use Google's European regulations consent message to present privacy choices to visitors in relevant regions. Depending on the options available, visitors can consent, refuse consent or manage their choices.",
+          "Your choices may be stored so that the website and relevant services can recognise your preferences. You can also manage or delete cookies through your browser settings. Blocking certain cookies may affect how some website features work.",
+          "The use of cookies and similar technologies is subject to applicable data protection and electronic communications laws. Where consent is required, it should be obtained before the relevant non-essential technologies are used.",
+        ],
+      },
+      {
+        heading: "7. Contact form and Formspree",
+        paragraphs: [
+          "Our Contact page uses Formspree to receive and deliver messages submitted through the website.",
+          "When you submit the form, the information you provide, including your name, email address, subject and message, is sent to Formspree for processing and delivery to us. Formspree may also process technical information needed to operate and protect its service.",
+          "Messages submitted through the form are delivered to the email inbox used to receive our Formspree notifications. The public contact email listed on this website is euroscope21@gmail.com.",
+          "Please review Formspree's privacy information at https://formspree.io/legal/privacy-policy/ for details about its data practices.",
+        ],
+      },
+      {
+        heading: "8. Website hosting and Vercel",
+        paragraphs: [
+          "EuroScope is hosted using Vercel. When you visit the website, Vercel may process technical information such as IP addresses, request information, browser details and security logs as necessary to deliver, maintain and protect the website.",
+          "For more information, please review Vercel's privacy policy at https://vercel.com/legal/privacy-policy.",
+        ],
+      },
+      {
+        heading: "9. Sharing and international transfers",
+        paragraphs: [
+          "We do not sell personal information submitted through our Contact form.",
+          "Information may be processed by service providers that help us operate the website, including Google, Formspree and Vercel. These providers process information according to their own terms and privacy practices.",
+          "Some service providers may process information in countries outside your country of residence or outside the European Economic Area. Where applicable, appropriate safeguards for international transfers should be used in accordance with data protection law.",
+        ],
+      },
+      {
+        heading: "10. How long information is retained",
+        paragraphs: [
+          "We keep contact messages for as long as reasonably necessary to respond to enquiries, manage follow-ups and maintain relevant records, unless a longer period is required by law.",
+          "Analytics, advertising and technical information may be retained according to the settings and retention practices of the relevant service providers.",
+          "We aim not to retain personal information longer than necessary for the purposes for which it was collected.",
+        ],
+      },
+      {
+        heading: "11. Your privacy rights",
+        paragraphs: [
+          "Depending on your location and applicable law, you may have the right to request access to your personal information, ask for incorrect information to be corrected, request deletion, restrict or object to certain processing, or request data portability.",
+          "Where processing is based on consent, you may withdraw that consent. Withdrawing consent does not affect the lawfulness of processing that took place before withdrawal.",
+          "If you are in the European Economic Area, you may have rights under the General Data Protection Regulation (GDPR). You may also have the right to lodge a complaint with your relevant data protection supervisory authority.",
+          "To make a privacy request, email euroscope21@gmail.com. We may need to verify your identity before responding.",
+        ],
+      },
+      {
+        heading: "12. Children's privacy",
+        paragraphs: [
+          "EuroScope is a general-interest website and is not intended to knowingly collect personal information from children in violation of applicable law. If you believe a child has submitted personal information to us, please contact us so we can review the matter.",
+        ],
+      },
+      {
+        heading: "13. Security",
+        paragraphs: [
+          "We take reasonable steps to protect information handled through our website. However, no website, online service or method of electronic transmission can be guaranteed to be completely secure.",
+        ],
+      },
+      {
+        heading: "14. Changes to this Privacy Policy",
+        paragraphs: [
+          "We may update this Privacy Policy when our website, services or legal requirements change. The latest version will be published on this page, together with its update date.",
+          "Last updated: 15 November 2026.",
         ],
       },
     ],
@@ -237,7 +326,18 @@ export default function InfoPage({ page }) {
             <h1>{content.title}</h1>
             <p className="info-intro">{content.intro}</p>
 
-            {page === "contact" && <ContactForm />}
+            {page === "contact" && (
+              <>
+                <ContactForm />
+                <p className="contact-note">
+                  Prefer email? Contact us at{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`}>
+                    {CONTACT_EMAIL}
+                  </a>
+                  .
+                </p>
+              </>
+            )}
 
             <div className="info-content">
               {content.sections.map((section) => (
