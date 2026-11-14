@@ -5,6 +5,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "People working together in an office",
     title: "How to Find a Job in Europe as a Foreigner",
+    author: "EuroScope Editorial Team",
     category: "Europe",
     description:
       "Learn how to search for jobs, prepare a European-style CV, understand work permits, and improve your chances of finding employment abroad.",
@@ -45,6 +46,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "University students on campus",
     title: "Best European Countries for International Students",
+    author: "EuroScope Editorial Team",
     category: "Europe",
     description:
       "Compare tuition fees, living expenses, language requirements, student work rules, and career opportunities before choosing where to study.",
@@ -85,6 +87,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "European city buildings",
     title: "Cost of Living in Europe: Rent, Food and Transport",
+    author: "EuroScope Editorial Team",
     category: "Europe",
     description:
       "Discover how to compare living costs across European cities and build a realistic monthly budget before relocating or studying abroad.",
@@ -125,6 +128,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Football stadium",
     title: "How Modern European Football Tactics Work",
+    author: "EuroScope Editorial Team",
     category: "Sports",
     description:
       "Understand pressing, formations, build-up play, tactical flexibility, and the details that make modern football interesting to watch.",
@@ -165,6 +169,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Cricket match",
     title: "European Cricket: Teams, Leagues and Tournaments",
+    author: "EuroScope Editorial Team",
     category: "Sports",
     description:
       "A beginner-friendly introduction to cricket in Europe, including national teams, club competitions, formats, and how to follow the sport.",
@@ -205,6 +210,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Esports gaming competition",
     title: "Inside Competitive PUBG Mobile Esports",
+    author: "EuroScope Editorial Team",
     category: "Sports",
     description:
       "Explore team coordination, rotations, survival, combat decisions, and the skills that separate competitive PUBG Mobile teams from casual players.",
@@ -245,6 +251,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Gaming tournament setup",
     title: "PUBG Mobile Tournament Formats Explained",
+    author: "EuroScope Editorial Team",
     category: "Gaming",
     description:
       "Learn how tournament rounds, placement points, eliminations, qualification stages, and finals work in competitive PUBG Mobile.",
@@ -285,6 +292,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Gaming creator setup",
     title: "How Small Gaming Creators Can Grow in 2026",
+    author: "EuroScope Editorial Team",
     category: "Gaming",
     description:
       "A realistic guide to building a gaming audience through consistent streams, useful clips, a recognisable style, and stronger community engagement.",
@@ -329,6 +337,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Computer and gaming equipment",
     title: "Essential Tools for Streamers and Gaming Creators",
+    author: "EuroScope Editorial Team",
     category: "Gaming",
     description:
       "Explore the main types of tools for streaming, recording, editing, audio, and content planning without spending money on unnecessary equipment.",
@@ -373,6 +382,7 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Airplane flying above the clouds",
     title: "Moving to Europe: A Beginner's Planning Checklist",
+    author: "EuroScope Editorial Team",
     category: "Europe",
     description:
       "Planning to move to Europe? Learn how to research destinations, check immigration requirements, prepare a budget, find housing, and avoid common relocation mistakes.",
@@ -426,8 +436,8 @@ export const articles = [
     imageAlt: "Airplane travelling to Europe",
     title: "Europe's New Digital Border System: What Non-EU Travellers Need to Know in 2026",
     author: "EuroScope Editorial Team",
-publishedAt: "2026-11-14",
-updatedAt: "2026-11-14",
+    publishedAt: "2026-11-14",
+    updatedAt: "2026-11-14",
     category: "Europe",
     description:
       "Europe's Entry/Exit System is now fully operational. Learn how EES works, who needs biometric registration, who is exempt, and how it differs from ETIAS.",
