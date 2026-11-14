@@ -1,0 +1,141 @@
+
+.info-page {
+  max-width: 820px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.info-page-inner {
+  width: 100%;
+}
+
+.info-page-card {
+  padding: 0;
+}
+
+.info-back {
+  display: inline-block;
+  margin-bottom: 34px;
+  color: #315efb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.info-back:hover {
+  text-decoration: underline;
+}
+
+.info-label,
+.info-page .eyebrow {
+  color: #315efb;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.info-page h1 {
+  margin: 12px 0 20px;
+  font-size: clamp(36px, 6vw, 58px);
+  line-height: 1.12;
+}
+
+.info-intro {
+  color: #667085;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.info-content {
+  margin-top: 36px;
+  color: #344054;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.info-content section {
+  margin-bottom: 30px;
+}
+
+.info-content h2 {
+  margin-bottom: 8px;
+  color: #101828;
+  font-size: 24px;
+}
+
+.info-content p {
+  margin-top: 0;
+}
+
+.euroscope-contact-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
+  max-width: 620px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-field label {
+  color: #101828;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  background: #fff;
+  color: #101828;
+  font: inherit;
+}
+
+.contact-field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: 2px solid #315efb;
+  outline-offset: 2px;
+  border-color: #315efb;
+}
+
+.contact-submit {
+  justify-self: start;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.contact-note {
+  margin: 0;
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.info-page-bottom {
+  margin-top: 36px;
+}
+
+@media (max-width: 600px) {
+  .info-page {
+    padding: 36px 20px 56px;
+  }
+
+  .info-page h1 {
+    overflow-wrap: anywhere;
+  }
+
+  .euroscope-contact-form {
+    width: 100%;
+  }
+}
