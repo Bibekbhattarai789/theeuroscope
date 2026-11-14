@@ -76,5 +76,10 @@
     <loc>https://euroscope.site/articles/moving-to-europe-checklist</loc>
     <priority>0.8</priority>
   </url>
+    <url>
+    <loc>https://euroscope.site/articles/eu-entry-exit-system-2026</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

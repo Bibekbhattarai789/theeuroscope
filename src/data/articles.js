@@ -419,6 +419,58 @@ export const articles = [
         body: "Moving to Europe can create valuable opportunities, but careful preparation is essential. Research the destination, confirm your legal status, budget for unexpected costs, and verify employment and housing arrangements. Immigration and employment rules can change, so use official national authorities for current requirements and treat this article as a planning guide rather than legal advice."
       }
     ]
+  },
+  {
+    slug: "eu-entry-exit-system-2026",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Airplane travelling to Europe",
+    title: "Europe's New Digital Border System: What Non-EU Travellers Need to Know in 2026",
+    category: "Europe",
+    description:
+      "Europe's Entry/Exit System is now fully operational. Learn how EES works, who needs biometric registration, who is exempt, and how it differs from ETIAS.",
+    readTime: "9 min read",
+    sections: [
+      {
+        heading: "Europe has introduced a new digital border system",
+        body: "Travelling to Europe has changed with the introduction of the European Union's Entry/Exit System, commonly called EES. The system replaces manual passport stamping for covered short-stay travellers with digital records of border crossings. It is designed to help participating European countries register the entry and exit of eligible non-EU visitors. If you are planning a trip to the Schengen Area, understanding the system can help you prepare for border checks."
+      },
+      {
+        heading: "What is the Entry/Exit System?",
+        body: "EES is an automated information system used at the external borders of participating European countries. It records information such as the traveller's passport details, the date and place of entry or exit, and, where required, a facial image and fingerprints. The system helps authorities calculate how long a covered visitor has stayed in the participating area and identify cases where someone may have overstayed the permitted period. EES is not a visa and does not replace the normal conditions for entering a country."
+      },
+      {
+        heading: "Who needs to register?",
+        body: "EES generally applies to non-EU nationals travelling for a short stay in the participating countries, usually for up to 90 days within any 180-day period. This can include visitors who are visa-exempt as well as visitors who hold a short-stay Schengen visa. On a first covered crossing, travellers may be asked to provide a facial image and fingerprints, subject to the rules and exemptions that apply to their age and circumstances. Later crossings can be checked against the digital record."
+      },
+      {
+        heading: "Who is generally exempt?",
+        body: "EES does not apply to everyone. EU citizens and citizens of countries associated with the Schengen arrangements, including Iceland, Liechtenstein, Norway and Switzerland, are generally outside the system's short-stay registration rules. Certain non-EU nationals who hold a valid residence permit or long-stay visa issued by a participating European country are also generally exempt when travelling under the relevant conditions. Exemptions can depend on the document, the issuing country and the route. Check the official EU information before travelling, especially if you hold a residence permit issued by a country participating in Schengen."
+      },
+      {
+        heading: "Does a Finnish residence permit mean you are exempt?",
+        body: "A non-EU national holding a valid Finnish residence permit will generally not be registered as a short-stay visitor under EES when travelling across the external borders of participating countries, because the person is resident in a participating country. Carry your valid passport and residence permit when travelling. Your Finnish permit does not, however, give you an unrestricted right to live or work in every European country. Always check the rules for your destination and make sure your documents are valid for the whole journey."
+      },
+      {
+        heading: "EES and ETIAS are not the same thing",
+        body: "EES and ETIAS are two different EU border initiatives. EES is a border-registration system that records the entry and exit of covered travellers. ETIAS is a planned travel authorisation for visa-exempt visitors who will need permission before travelling to participating European countries. ETIAS is not a visa, and it does not replace a visa for people who need one. Check the official ETIAS website for the latest launch information and application status before making travel plans."
+      },
+      {
+        heading: "Will EES make travel slower?",
+        body: "The first registration may take additional time because some travellers need to provide biometric information. The process can vary depending on the airport, land border, port, equipment and number of passengers arriving at the same time. Border authorities and transport operators may provide instructions about where and when to complete registration. Allow extra time for your journey, follow staff instructions and avoid leaving your arrival until the last possible moment when connecting to another service."
+      },
+      {
+        heading: "What should travellers do before departure?",
+        body: "Check whether EES applies to your nationality and residence status. Make sure your passport is valid and carry any residence permit or long-stay visa relevant to your trip. Review the entry conditions for your destination and keep evidence of your travel plans or accommodation if it may be requested. Do not assume that an EES record or a travel authorisation guarantees admission: border officials can still assess whether you meet the conditions for entry."
+      },
+      {
+        heading: "Official sources and further information",
+        body: "For the latest rules, exemptions and practical guidance, use official European Union sources. Start with the European Commission's Entry/Exit System information: https://home-affairs.ec.europa.eu/policies/schengen/smart-borders/entry-exit-system_en . Read the Commission's explanation of who is exempt: https://home-affairs.ec.europa.eu/news/entry-exit-system-fully-operational-10-april-2026-who-exempt-2026-07-27_en . For the difference between EES and ETIAS, see: https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en . For ETIAS updates and frequently asked questions, visit: https://travel-europe.europa.eu/etias/faq . Rules and implementation details can change, so check these official pages again before travelling."
+      },
+      {
+        heading: "Final thoughts",
+        body: "The Entry/Exit System is an important change to how participating European countries register short-stay visitors at their external borders. Most travellers can prepare by checking whether the system applies to them, carrying the correct documents and allowing enough time for border procedures. If you live in a participating country with a valid residence permit, check the exemption rules that apply to your situation rather than assuming that every non-EU traveller follows the same process. This article is general travel information, not individual immigration or legal advice."
+      }
+    ]
   }
 ];
 
