@@ -1,55 +1,20 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://euroscope.site/</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/about</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/contact</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/privacy</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/editorial-policy</loc>
-  </url>
-
-  <url>
-    <loc>https://euroscope.site/article/find-a-job-in-europe</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/european-countries-for-international-students</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/cost-of-living-in-europe</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/modern-european-football</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/european-cricket-guide</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/pubg-mobile-esports-europe</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/pubg-mobile-tournament-formats</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/grow-a-small-gaming-channel</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/gaming-tools-for-streamers</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/moving-to-europe-checklist</loc>
-  </url>
-  <url>
-    <loc>https://euroscope.site/article/eu-entry-exit-system-2026</loc>
-  </url>
-
+  <url><loc>https://euroscope.site/</loc></url>
+  <url><loc>https://euroscope.site/about</loc></url>
+  <url><loc>https://euroscope.site/contact</loc></url>
+  <url><loc>https://euroscope.site/privacy</loc></url>
+  <url><loc>https://euroscope.site/editorial-policy</loc></url>
+  <url><loc>https://euroscope.site/article/find-a-job-in-europe</loc></url>
+  <url><loc>https://euroscope.site/article/european-countries-for-international-students</loc></url>
+  <url><loc>https://euroscope.site/article/cost-of-living-in-europe</loc></url>
+  <url><loc>https://euroscope.site/article/modern-european-football</loc></url>
+  <url><loc>https://euroscope.site/article/european-cricket-guide</loc></url>
+  <url><loc>https://euroscope.site/article/pubg-mobile-esports-europe</loc></url>
+  <url><loc>https://euroscope.site/article/pubg-mobile-tournament-formats</loc></url>
+  <url><loc>https://euroscope.site/article/grow-a-small-gaming-channel</loc></url>
+  <url><loc>https://euroscope.site/article/gaming-tools-for-streamers</loc></url>
+  <url><loc>https://euroscope.site/article/moving-to-europe-checklist</loc></url>
+  <url><loc>https://euroscope.site/article/eu-entry-exit-system-2026</loc></url>
 </urlset>
