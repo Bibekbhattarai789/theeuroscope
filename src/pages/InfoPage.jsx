@@ -213,6 +213,55 @@ const pages = {
   },
 };
 
+// Automatically turn website URLs and email addresses into clickable links.
+function renderParagraph(text) {
+  const pattern =
+    /(https?:\/\/[^\s]+|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/gi;
+
+  return text.split(pattern).map((part, index) => {
+    if (/^https?:\/\//i.test(part)) {
+      const url = part.replace(/[.,;!?]+$/, "");
+      const punctuation = part.slice(url.length);
+
+      return (
+        <span key={index}>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              textDecoration: "underline",
+              textUnderlineOffset: "3px",
+              cursor: "pointer",
+            }}
+          >
+            {url}
+          </a>
+          {punctuation}
+        </span>
+      );
+    }
+
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(part)) {
+      return (
+        <a
+          key={index}
+          href={`mailto:${part}`}
+          style={{
+            textDecoration: "underline",
+            textUnderlineOffset: "3px",
+            cursor: "pointer",
+          }}
+        >
+          {part}
+        </a>
+      );
+    }
+
+    return part;
+  });
+}
+
 function ContactForm() {
   return (
     <form
@@ -331,7 +380,13 @@ export default function InfoPage({ page }) {
                 <ContactForm />
                 <p className="contact-note">
                   Prefer email? Contact us at{" "}
-                  <a href={`mailto:${CONTACT_EMAIL}`}>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    style={{
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                    }}
+                  >
                     {CONTACT_EMAIL}
                   </a>
                   .
@@ -344,7 +399,9 @@ export default function InfoPage({ page }) {
                 <section key={section.heading}>
                   <h2>{section.heading}</h2>
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>
+                      {renderParagraph(paragraph)}
+                    </p>
                   ))}
                 </section>
               ))}
