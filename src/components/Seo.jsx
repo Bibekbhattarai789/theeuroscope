@@ -3,8 +3,27 @@ import { useEffect } from "react";
 
 const SITE_URL = "https://euroscope.site";
 const SITE_NAME = "EuroScope";
+const AUTHOR_URL = "https://euroscope.site/about";
 const DEFAULT_DESCRIPTION =
-  "Explore practical European guides, sports analysis and gaming stories on EuroScope.";
+  "Explore practical European guides, sports analysis and gaming stories on EuroScope";
+
+// Convert dates into complete ISO 8601 timestamps.
+// Date-only values are interpreted as UTC.
+function formatSchemaDate(date) {
+  if (!date) return undefined;
+
+  const value = /^\d{4}-\d{2}-\d{2}$/.test(date)
+    ? `${date}T00:00:00Z`
+    : date;
+
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return undefined;
+  }
+
+  return parsedDate.toISOString();
+}
 
 function Seo({
   title,
@@ -29,6 +48,13 @@ function Seo({
 
     const authorName =
       article?.author || "EuroScope Editorial Team";
+
+    const publishedDate = formatSchemaDate(
+      article?.publishedAt
+    );
+
+    const modifiedDate =
+      formatSchemaDate(article?.updatedAt) || publishedDate;
 
     // Update browser title
     document.title = pageTitle;
@@ -65,19 +91,19 @@ function Seo({
     setMeta("property", "og:image", pageImage);
     setMeta("property", "og:site_name", SITE_NAME);
 
-    if (article?.publishedAt) {
+    if (publishedDate) {
       setMeta(
         "property",
         "article:published_time",
-        new Date(article.publishedAt).toISOString()
+        publishedDate
       );
     }
 
-    if (article?.updatedAt) {
+    if (modifiedDate) {
       setMeta(
         "property",
         "article:modified_time",
-        new Date(article.updatedAt).toISOString()
+        modifiedDate
       );
     }
 
@@ -115,6 +141,7 @@ function Seo({
         author: {
           "@type": "Organization",
           name: authorName,
+          url: AUTHOR_URL,
         },
         publisher: {
           "@type": "Organization",
@@ -129,14 +156,12 @@ function Seo({
         inLanguage: "en",
       };
 
-      if (article.publishedAt) {
-        articleSchema.datePublished = article.publishedAt;
+      if (publishedDate) {
+        articleSchema.datePublished = publishedDate;
       }
 
-      if (article.updatedAt) {
-        articleSchema.dateModified = article.updatedAt;
-      } else if (article.publishedAt) {
-        articleSchema.dateModified = article.publishedAt;
+      if (modifiedDate) {
+        articleSchema.dateModified = modifiedDate;
       }
 
       if (article.category) {
@@ -154,7 +179,6 @@ function Seo({
     } else if (schemaScript) {
       schemaScript.remove();
     }
-
   }, [title, description, noindex, article]);
 
   return null;
