@@ -7,11 +7,11 @@ import ArticleCard from "../components/ArticleCard";
 function formatDate(date) {
   if (!date) return null;
 
-  const parsedDate = new Date(date);
+  const parsed = new Date(date);
 
-  if (Number.isNaN(parsedDate.getTime())) return null;
+  if (Number.isNaN(parsed.getTime())) return null;
 
-  return parsedDate.toLocaleDateString("en-GB", {
+  return parsed.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -51,13 +51,25 @@ function ArticlePage() {
     );
   }
 
-  const relatedArticles = articles
-    .filter(
-      (item) =>
-        item.slug !== article.slug &&
-        item.category === article.category
-    )
-    .slice(0, 3);
+  // Recommend articles from the same category first.
+  // If fewer than three exist, fill the remaining spaces
+  // with articles from other categories.
+  const sameCategoryArticles = articles.filter(
+    (item) =>
+      item.slug !== article.slug &&
+      item.category === article.category
+  );
+
+  const otherCategoryArticles = articles.filter(
+    (item) =>
+      item.slug !== article.slug &&
+      item.category !== article.category
+  );
+
+  const relatedArticles = [
+    ...sameCategoryArticles,
+    ...otherCategoryArticles,
+  ].slice(0, 3);
 
   const author = article.author || "EuroScope Editorial Team";
   const publishedDate = formatDate(article.publishedAt);
@@ -125,17 +137,28 @@ function ArticlePage() {
         ))}
       </div>
 
-      <section className="article-end">
-        <p className="eyebrow">Keep exploring</p>
+      {/* Internal links to related articles */}
+      {relatedArticles.length > 0 && (
+        <section className="article-end">
+          <p className="eyebrow">Related reading</p>
 
-        <h2>More from {article.category}</h2>
+          <h2>Continue exploring EuroScope</h2>
 
-        <p>
-          Continue reading our practical guides, analysis and
-          stories from EuroScope.
-        </p>
+          <p>
+            Discover more useful guides, insights and stories
+            related to this topic.
+          </p>
 
-        {relatedArticles.length > 0 ? (
+          <ul className="related-text-links">
+            {relatedArticles.map((item) => (
+              <li key={item.slug}>
+                <Link to={`/article/${item.slug}`}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
           <div className="articles-grid">
             {relatedArticles.map((relatedArticle) => (
               <ArticleCard
@@ -144,17 +167,12 @@ function ArticlePage() {
               />
             ))}
           </div>
-        ) : (
-          <p>
-            More articles are coming soon. Visit our homepage
-            to explore all available topics.
-          </p>
-        )}
 
-        <Link className="primary-button" to="/#articles">
-          Explore all articles →
-        </Link>
-      </section>
+          <Link className="primary-button" to="/#articles">
+            Explore all articles →
+          </Link>
+        </section>
+      )}
     </main>
   );
 }
