@@ -425,6 +425,9 @@ export const articles = [
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Airplane travelling to Europe",
     title: "Europe's New Digital Border System: What Non-EU Travellers Need to Know in 2026",
+    author: "EuroScope Editorial Team",
+publishedAt: "2026-11-14",
+updatedAt: "2026-11-14",
     category: "Europe",
     description:
       "Europe's Entry/Exit System is now fully operational. Learn how EES works, who needs biometric registration, who is exempt, and how it differs from ETIAS.",
