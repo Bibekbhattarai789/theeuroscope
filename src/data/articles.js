@@ -2777,7 +2777,82 @@ const articles = [
       ]
     }
   ]
-}
+},
+
+{
+  slug: "nvidia-latest-news-november-2026",
+  image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80",
+  imageAlt: "Gaming computer hardware and graphics technology",
+  title: "NVIDIA Latest News November 2026: Leadership Changes, RTX and AI Developments",
+  author: "EuroScope Editorial Team",
+  category: "Gaming",
+  description: "Explore the latest NVIDIA news in November 2026, including its CEO transition, GeForce RTX updates, DLSS 5, AI computing and upcoming financial results.",
+  readTime: "7 min read",
+  publishedAt: "2026-11-15",
+  updatedAt: "2026-11-15",
+  sections: [
+    {
+      heading: "NVIDIA faces a major leadership change",
+      paragraphs: [
+        "NVIDIA has experienced a major leadership development in November 2026. On November 12, the company announced that Jensen Huang had resigned as president, chief executive officer and a member of its board, effective immediately.",
+        "NVIDIA appointed its chief financial officer, Colette Kress, as interim CEO while the board begins searching for a permanent successor. Kress joined NVIDIA in 2013 and has played an important role in managing the company's financial operations.",
+        "The company said its operations, customer commitments and product roadmap are expected to continue without interruption. The leadership transition is significant because NVIDIA has become one of the most influential companies in the global AI and graphics industries.",
+        "The company has not announced a permanent successor. Readers should distinguish the confirmed leadership announcement from speculation about the company's future."
+      ]
+    },
+    {
+      heading: "GeForce RTX and DLSS 5 bring new gaming developments",
+      paragraphs: [
+        "NVIDIA continues to develop technologies designed to improve PC gaming. Its GeForce RTX platform combines graphics processing, ray tracing and AI-powered features to improve visual quality and performance in supported games.",
+        "One of the latest developments is DLSS 5. NVIDIA announced on November 12 that DLSS 5 had become available in War Thunder. The technology is part of NVIDIA's continuing effort to use AI-based rendering techniques in modern games.",
+        "For gamers, these developments matter because graphics technology can influence image quality, frame rates and the hardware needed to run demanding games. Actual results depend on the graphics card, game, settings and software support."
+      ]
+    },
+    {
+      heading: "RTX Spark expands NVIDIA's focus on personal AI computers",
+      paragraphs: [
+        "NVIDIA is also expanding beyond traditional gaming graphics cards. In October 2026, the company announced the availability of RTX Spark laptops from partners including ASUS, Dell, HP, Lenovo, Microsoft and MSI.",
+        "NVIDIA describes RTX Spark as a platform combining Blackwell RTX graphics, CUDA and AI technologies. The announced systems offer up to 128GB of unified memory and up to one petaflop of AI computing performance.",
+        "The idea is to make more powerful AI computing available directly on personal computers. This could be useful for developers, content creators and people who want to experiment with AI applications locally instead of relying entirely on cloud services."
+      ]
+    },
+    {
+      heading: "NVIDIA's international AI business continues to grow",
+      paragraphs: [
+        "NVIDIA's business is not limited to gaming. Its GPUs and networking technologies are widely used in data centres that train and operate artificial intelligence systems.",
+        "On November 13, Reuters reported that South Korea's science and technology minister said NVIDIA had confirmed it would maintain its previously announced commitment to supply 260,000 advanced GPUs to the country.",
+        "The agreement is part of wider cooperation involving AI computing infrastructure, Korean-designed processors and research into physical AI. It demonstrates how NVIDIA's technology is connected to national AI infrastructure plans."
+      ]
+    },
+    {
+      heading: "What to watch next: NVIDIA's financial results",
+      paragraphs: [
+        "Another important date for NVIDIA watchers is November 17, 2026. The company has scheduled the announcement of its third-quarter fiscal 2027 financial results, followed by an earnings conference call.",
+        "Investors and technology observers will be watching for updates on revenue, data centre demand, AI infrastructure spending and the company's outlook. These results could provide more information about the direction of NVIDIA's business following its leadership transition.",
+        "The financial announcement may also offer insight into demand for AI chips and the company's ability to maintain its position in an increasingly competitive semiconductor market."
+      ]
+    },
+    {
+      heading: "What NVIDIA's latest developments mean for gamers",
+      paragraphs: [
+        "For gamers, NVIDIA's latest developments show that the company is working across several areas at once. GeForce RTX graphics, DLSS technology and gaming drivers remain important, while AI computing is becoming a larger part of its overall business.",
+        "However, not every AI announcement directly improves gaming performance. Gamers should check supported graphics cards, individual game compatibility and independent performance tests before making hardware purchasing decisions.",
+        "The leadership transition also creates an important question about NVIDIA's long-term strategy. Its next announcements and financial results will help show how the company plans to continue developing its gaming and AI platforms."
+      ]
+    },
+    {
+      heading: "Official sources and further information",
+      paragraphs: [
+        "NVIDIA's official announcement about the CEO transition: https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+        "NVIDIA GeForce news and DLSS updates: https://www.nvidia.com/en-gb/geforce/news/",
+        "NVIDIA RTX Spark availability announcement: https://nvidianews.nvidia.com/news/nvidia-rtx-spark-pcs-available-today-a-new-beginning-for-windows-pcs",
+        "Reuters report on NVIDIA's GPU commitment to South Korea: https://www.reuters.com/world/asia-pacific/south-korea-says-nvidia-will-keep-gpu-pledges-after-huangs-resignation-2026-11-13/",
+        "NVIDIA's official newsroom is the best place to check for future company announcements and updates."
+      ]
+    }
+  ]
+},
+
 
  
   
