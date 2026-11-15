@@ -52,8 +52,6 @@ function ArticlePage() {
   }
 
   // Recommend articles from the same category first.
-  // If fewer than three exist, fill the remaining spaces
-  // with articles from other categories.
   const sameCategoryArticles = articles.filter(
     (item) =>
       item.slug !== article.slug &&
@@ -89,7 +87,9 @@ function ArticlePage() {
 
       <div className="article-meta">
         <span className="category">{article.category}</span>
-        <span>{article.readTime}</span>
+        {article.readTime && (
+          <span>{article.readTime}</span>
+        )}
       </div>
 
       <h1>{article.title}</h1>
@@ -128,16 +128,27 @@ function ArticlePage() {
         </figure>
       )}
 
+      {/* Article content */}
       <div className="article-body">
-        {article.sections.map((section, index) => (
+        {(article.sections || []).map((section, index) => (
           <section key={`${article.slug}-${index}`}>
-            <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+            {section.heading && (
+              <h2>{section.heading}</h2>
+            )}
+
+            {/* Support both paragraphs and body formats */}
+            {Array.isArray(section.paragraphs) ? (
+              section.paragraphs.map((paragraph, paragraphIndex) => (
+                <p key={paragraphIndex}>{paragraph}</p>
+              ))
+            ) : section.body ? (
+              <p>{section.body}</p>
+            ) : null}
           </section>
         ))}
       </div>
 
-      {/* Internal links to related articles */}
+      {/* Related articles */}
       {relatedArticles.length > 0 && (
         <section className="article-end">
           <p className="eyebrow">Related reading</p>
