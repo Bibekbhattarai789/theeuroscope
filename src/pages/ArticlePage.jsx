@@ -20,40 +20,53 @@ function formatDate(date) {
 }
 
 function getRelatedArticles(article) {
-  const sourceText = `${article.title || ""} ${article.description || ""}`
-    .toLowerCase();
+  const stopWords = new Set([
+    "about", "after", "also", "among", "because", "being",
+    "between", "could", "every", "from", "have", "into",
+    "more", "most", "other", "over", "should", "their",
+    "there", "these", "they", "this", "those", "through",
+    "under", "using", "what", "when", "where", "which",
+    "while", "with", "your", "guide", "explained", "best",
+    "europe", "european"
+  ]);
 
-  const keywords = [
-    "gaming", "gta", "game", "esports", "streaming", "pubg",
-    "europe", "european", "eu", "football", "sports",
-    "nvidia", "technology", "career", "job", "travel",
-    "tourism", "migration", "student", "university"
-  ];
+  const getKeywords = (item) => {
+    const text = `${item.title || ""} ${item.description || ""}`;
 
-  const relevantKeywords = keywords.filter((word) =>
-    sourceText.includes(word)
-  );
+    return new Set(
+      text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, " ")
+        .split(/\s+/)
+        .filter((word) => word.length >= 4 && !stopWords.has(word))
+    );
+  };
+
+  const sourceKeywords = getKeywords(article);
 
   return articles
     .filter((item) => item.slug !== article.slug)
     .map((item) => {
-      const text = `${item.title || ""} ${item.description || ""}`
-        .toLowerCase();
-
+      const candidateKeywords = getKeywords(item);
       let score = 0;
 
-      if (item.category === article.category) {
-        score += 3;
+      if (
+        article.category &&
+        item.category &&
+        article.category.toLowerCase() === item.category.toLowerCase()
+      ) {
+        score += 4;
       }
 
-      relevantKeywords.forEach((word) => {
-        if (text.includes(word)) {
+      sourceKeywords.forEach((word) => {
+        if (candidateKeywords.has(word)) {
           score += 2;
         }
       });
 
       return { item, score };
     })
+    .filter((result) => result.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, 3)
     .map((result) => result.item);
@@ -66,27 +79,30 @@ function ArticlePage() {
 
   if (!article) {
     return (
-      <main className="reading">
+      <main className="article-page-v2 article-not-found-v2">
         <Seo
           title="Article Not Found"
           description="The requested EuroScope article could not be found."
           noindex
         />
 
-        <Link className="back-link" to="/#articles">
+        <Link className="article-back-v2" to="/#articles">
           ← Back to EuroScope
         </Link>
 
-        <h1>Article not found</h1>
+        <div className="article-not-found-content">
+          <span className="article-kicker-v2">EUROSCOPE</span>
+          <h1>Article not found</h1>
 
-        <p className="intro">
-          Sorry, we couldn't find that article. It may have been
-          moved or the link may be incorrect.
-        </p>
+          <p>
+            Sorry, we couldn't find that article. It may have been
+            moved or the link may be incorrect.
+          </p>
 
-        <Link className="primary-button" to="/#articles">
-          Explore articles →
-        </Link>
+          <Link className="article-button-v2" to="/#articles">
+            Explore articles →
+          </Link>
+        </div>
       </main>
     );
   }
@@ -98,90 +114,132 @@ function ArticlePage() {
   const updatedDate = formatDate(article.updatedAt);
 
   return (
-    <main className="reading article-reading">
+    <main className="article-page-v2">
       <Seo
         title={article.title}
         description={article.description}
         article={article}
       />
 
-      <Link className="back-link" to="/#articles">
-        ← Back to all articles
-      </Link>
+      <div className="article-topbar-v2">
+        <Link className="article-back-v2" to="/#articles">
+          <span aria-hidden="true">←</span> All articles
+        </Link>
 
-      <div className="article-meta">
-        <span className="category">{article.category}</span>
-
-        {article.readTime && (
-          <span>{article.readTime}</span>
-        )}
+        <span className="article-topbar-label">
+          EUROSCOPE · EDITORIAL
+        </span>
       </div>
 
-      <h1>{article.title}</h1>
+      <header className="article-header-v2">
+        <div className="article-meta-v2">
+          {article.category && (
+            <span className="article-category-v2">
+              {article.category}
+            </span>
+          )}
 
-      <p className="intro">{article.description}</p>
+          {article.readTime && (
+            <span className="article-readtime-v2">
+              {article.readTime}
+            </span>
+          )}
+        </div>
 
-      <div className="byline">
-        Written by <strong>{author}</strong>
+        <h1>{article.title}</h1>
 
-        {publishedDate && (
-          <span>
-            {" "}· Published{" "}
-            <time dateTime={article.publishedAt}>
-              {publishedDate}
-            </time>
-          </span>
+        {article.description && (
+          <p className="article-intro-v2">
+            {article.description}
+          </p>
         )}
 
-        {updatedDate && updatedDate !== publishedDate && (
-          <span>
-            {" "}· Updated{" "}
-            <time dateTime={article.updatedAt}>
-              {updatedDate}
-            </time>
-          </span>
-        )}
-      </div>
+        <div className="article-byline-v2">
+          <div className="article-author-avatar">
+            E
+          </div>
+
+          <div className="article-author-details">
+            <span className="article-author-name">{author}</span>
+
+            <div className="article-date-details">
+              {publishedDate && (
+                <span>
+                  Published{" "}
+                  <time dateTime={article.publishedAt}>
+                    {publishedDate}
+                  </time>
+                </span>
+              )}
+
+              {updatedDate && updatedDate !== publishedDate && (
+                <span>
+                  · Updated{" "}
+                  <time dateTime={article.updatedAt}>
+                    {updatedDate}
+                  </time>
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </header>
 
       {article.image && (
-        <figure className="article-featured-image">
+        <figure className="article-image-v2">
           <img
             src={article.image}
             alt={article.imageAlt || article.title}
             fetchPriority="high"
           />
+          <figcaption>{article.imageAlt || article.title}</figcaption>
         </figure>
       )}
 
-      <div className="article-body">
-        {(article.sections || []).map((section, index) => (
-          <section key={`${article.slug}-${index}`}>
-            {section.heading && (
-              <h2>{section.heading}</h2>
-            )}
+      <div className="article-content-layout-v2">
+        <article className="article-body-v2">
+          {(article.sections || []).map((section, index) => (
+            <section
+              className="article-section-v2"
+              key={`${article.slug}-${index}`}
+            >
+              {section.heading && (
+                <h2>{section.heading}</h2>
+              )}
 
-            {Array.isArray(section.paragraphs) ? (
-              section.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>{paragraph}</p>
-              ))
-            ) : section.body ? (
-              <p>{section.body}</p>
-            ) : null}
-          </section>
-        ))}
+              {Array.isArray(section.paragraphs) ? (
+                section.paragraphs.map((paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex}>{paragraph}</p>
+                ))
+              ) : section.body ? (
+                <p>{section.body}</p>
+              ) : null}
+            </section>
+          ))}
+        </article>
       </div>
 
       {relatedArticles.length > 0 && (
-        <section className="article-end">
-          <p className="eyebrow">Related reading</p>
+        <section className="article-related-v2">
+          <div className="article-related-heading">
+            <div>
+              <span className="article-kicker-v2">
+                KEEP EXPLORING
+              </span>
 
-          <h2>Continue exploring EuroScope</h2>
+              <h2>More stories for you</h2>
 
-          <p>
-            Explore more articles and guides connected to this topic.
-          </p>
+              <p>
+                Discover more articles and guides related to this topic.
+              </p>
+            </div>
 
-          <div className="articles-grid">
+            <Link to="/#articles" className="article-view-all-v2">
+              View all articles →
+            </Link>
+          </div>
+
+          <div className="article-related-grid-v2">
             {relatedArticles.map((relatedArticle) => (
               <ArticleCard
                 key={relatedArticle.slug}
@@ -189,12 +247,14 @@ function ArticlePage() {
               />
             ))}
           </div>
-
-          <Link className="primary-button" to="/#articles">
-            Explore all articles →
-          </Link>
         </section>
       )}
+
+      <div className="article-bottom-v2">
+        <Link to="/#articles" className="article-back-bottom-v2">
+          ← Discover more on EuroScope
+        </Link>
+      </div>
     </main>
   );
 }
