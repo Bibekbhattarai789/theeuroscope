@@ -131,6 +131,34 @@ function ArticlePage() {
         </span>
       </div>
 
+      {/* Visible breadcrumb navigation */}
+      <nav
+        className="article-breadcrumbs"
+        aria-label="Breadcrumb"
+      >
+        <ol>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li aria-hidden="true" className="breadcrumb-separator">
+            /
+          </li>
+
+          <li>
+            <Link to="/#articles">Articles</Link>
+          </li>
+
+          <li aria-hidden="true" className="breadcrumb-separator">
+            /
+          </li>
+
+          <li>
+            <span aria-current="page">{article.title}</span>
+          </li>
+        </ol>
+      </nav>
+
       <header className="article-header-v2">
         <div className="article-meta-v2">
           {article.category && (

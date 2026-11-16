@@ -3789,3 +3789,57 @@ body::after {
     transition: none !important;
   }
 }
+
+
+/* ==========================================
+   EUROSCOPE — VISIBLE ARTICLE BREADCRUMBS
+========================================== */
+
+.article-breadcrumbs {
+  width: min(100% - 40px, 1120px);
+  margin: 18px auto 28px;
+  overflow: hidden;
+}
+
+.article-breadcrumbs ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.article-breadcrumbs a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.article-breadcrumbs a:hover {
+  color: #365cf5;
+}
+
+.article-breadcrumbs .breadcrumb-separator {
+  color: #a0aabd;
+}
+
+.article-breadcrumbs li:last-child span {
+  color: #26344d;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .article-breadcrumbs {
+    width: calc(100% - 32px);
+    margin: 14px auto 22px;
+  }
+
+  .article-breadcrumbs ol {
+    gap: 6px;
+    font-size: 12px;
+  }
+}
