@@ -19,6 +19,7 @@ const ARTICLES_PER_PAGE = 9;
 function BrandLogo() {
   return (
     <Link className="logo brand-logo" to="/" aria-label="EuroScope home">
+      <span className="brand-symbol" aria-hidden="true">E</span>
       <span className="brand-name">
         Euro<span>Scope</span>
       </span>
@@ -39,7 +40,7 @@ function Header() {
         </nav>
 
         <Link className="header-button" to="/#newsletter">
-          Newsletter
+          Stay connected <span aria-hidden="true">→</span>
         </Link>
       </div>
     </header>
@@ -61,7 +62,6 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Explore</h3>
-
           <nav className="footer-links" aria-label="Explore links">
             <Link to="/#articles">Europe guides</Link>
             <Link to="/#articles">Sports</Link>
@@ -71,7 +71,6 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Information</h3>
-
           <nav className="footer-links" aria-label="Information links">
             <Link to="/about">About us</Link>
             <Link to="/contact">Contact</Link>
@@ -82,10 +81,7 @@ function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <p>
-          © {new Date().getFullYear()} EuroScope. All rights reserved.
-        </p>
-
+        <p>© {new Date().getFullYear()} EuroScope. All rights reserved.</p>
         <p>Made for curious minds across Europe.</p>
       </div>
     </footer>
@@ -99,36 +95,12 @@ function SiteLayout() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-
-        <Route
-          path="/article/:slug"
-          element={<ArticlePage />}
-        />
-
-        <Route
-          path="/about"
-          element={<InfoPage page="about" />}
-        />
-
-        <Route
-          path="/contact"
-          element={<InfoPage page="contact" />}
-        />
-
-        <Route
-          path="/privacy"
-          element={<InfoPage page="privacy" />}
-        />
-
-        <Route
-          path="/editorial-policy"
-          element={<InfoPage page="editorial" />}
-        />
-
-        <Route
-          path="*"
-          element={<NotFoundPage />}
-        />
+        <Route path="/article/:slug" element={<ArticlePage />} />
+        <Route path="/about" element={<InfoPage page="about" />} />
+        <Route path="/contact" element={<InfoPage page="contact" />} />
+        <Route path="/privacy" element={<InfoPage page="privacy" />} />
+        <Route path="/editorial-policy" element={<InfoPage page="editorial" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <Footer />
@@ -143,7 +115,7 @@ function HomePage() {
 
   const categories = useMemo(() => {
     const uniqueCategories = [
-      ...new Set(articles.map((article) => article.category)),
+      ...new Set(articles.map((article) => article.category).filter(Boolean)),
     ];
 
     return ["All", ...uniqueCategories];
@@ -154,8 +126,7 @@ function HomePage() {
 
     return articles.filter((article) => {
       const matchesCategory =
-        category === "All" ||
-        article.category === category;
+        category === "All" || article.category === category;
 
       const matchesSearch =
         !searchText ||
@@ -167,82 +138,134 @@ function HomePage() {
     });
   }, [search, category]);
 
-  // Reset the visible article count when search or category changes.
   useEffect(() => {
     setVisibleCount(ARTICLES_PER_PAGE);
   }, [search, category]);
 
   const visibleArticles = filteredArticles.slice(0, visibleCount);
-
   const hasMoreArticles = visibleCount < filteredArticles.length;
+
+  // Use an existing article as the homepage featured story.
+  const featuredArticle = articles[0];
 
   return (
     <>
       <Seo />
 
-      <main>
+      <main className="homepage">
         <section className="hero container">
           <div className="hero-content">
-            <p className="eyebrow">
-              Europe · Sports · Gaming
+            <p className="eyebrow hero-kicker">
+              <span className="hero-kicker-dot" />
+              EUROPE · SPORTS · GAMING
             </p>
 
-            <h1>Europe, in one place.</h1>
+            <h1>
+              Discover more.
+              <br />
+              <span>Understand Europe.</span>
+            </h1>
 
             <p className="hero-description">
-              Practical European guides, sports analysis and gaming
-              stories — useful information instead of copied headlines.
+              Explore practical European guides, sports analysis and
+              gaming stories. Clear information, useful insights and
+              fresh perspectives — all in one place.
             </p>
 
-            <div className="hero-tags">
+            <div className="hero-actions">
+              <a className="primary-button" href="#articles">
+                Explore the latest <span aria-hidden="true">→</span>
+              </a>
+
+              <Link className="hero-secondary-link" to="/about">
+                About EuroScope
+              </Link>
+            </div>
+
+            <div className="hero-topics" aria-label="Topics covered">
               <span>🇪🇺 Europe</span>
               <span>⚽ Sports</span>
               <span>🎮 Gaming</span>
-              <span>💼 Opportunities</span>
+              <span>💡 Guides & insights</span>
             </div>
           </div>
 
-          <div className="hero-feature">
-            <p className="eyebrow">Featured guide</p>
+          {featuredArticle && (
+            <Link
+              className="hero-feature"
+              to={`/article/${featuredArticle.slug}`}
+              aria-label={`Read featured article: ${featuredArticle.title}`}
+            >
+              {featuredArticle.image && (
+                <img
+                  className="hero-feature-image"
+                  src={featuredArticle.image}
+                  alt={featuredArticle.imageAlt || featuredArticle.title}
+                />
+              )}
 
-            <h2>Explore Europe with EuroScope</h2>
+              <div className="hero-feature-overlay" />
 
-            <p>
-              Discover useful guides, sports stories and gaming insights.
-            </p>
+              <div className="hero-feature-content">
+                <span className="featured-label">
+                  <span className="featured-label-dot" />
+                  EDITOR'S PICK
+                </span>
 
-            <a className="primary-button" href="#articles">
-              Explore articles →
-            </a>
+                <span className="featured-category">
+                  {featuredArticle.category || "Featured"}
+                </span>
+
+                <h2>{featuredArticle.title}</h2>
+
+                <p>
+                  {featuredArticle.description ||
+                    "Explore this story and discover more with EuroScope."}
+                </p>
+
+                <span className="featured-read-link">
+                  Read the story <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </Link>
+          )}
+        </section>
+
+        <section className="topic-strip">
+          <div className="container topic-strip-inner">
+            <span className="topic-strip-label">EXPLORE EURO SCOPE</span>
+            <span>European life & opportunities</span>
+            <span>Football & sports</span>
+            <span>Gaming & esports</span>
           </div>
         </section>
 
-        <section
-          className="container articles-section"
-          id="articles"
-        >
+        <section className="container articles-section" id="articles">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">
-                Discover something useful
+              <p className="eyebrow">Ideas worth exploring</p>
+              <h2>Latest stories</h2>
+              <p className="section-description">
+                Guides, analysis and stories selected for curious minds.
               </p>
-
-              <h2>Latest articles</h2>
             </div>
 
-            <p>
-              Showing {visibleArticles.length} of {filteredArticles.length} articles
-            </p>
+            <span className="article-total">
+              {filteredArticles.length} {filteredArticles.length === 1 ? "story" : "stories"}
+            </span>
           </div>
 
           <div className="article-controls">
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search articles..."
-              aria-label="Search articles"
-            />
+            <div className="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input
+                type="search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Search stories and guides..."
+                aria-label="Search articles"
+              />
+            </div>
 
             <select
               value={category}
@@ -251,10 +274,14 @@ function HomePage() {
             >
               {categories.map((item) => (
                 <option key={item} value={item}>
-                  {item}
+                  {item === "All" ? "All topics" : item}
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className="results-count" aria-live="polite">
+            Showing {visibleArticles.length} of {filteredArticles.length} articles
           </div>
 
           {filteredArticles.length > 0 ? (
@@ -272,28 +299,26 @@ function HomePage() {
                 <div className="show-more-container">
                   <button
                     type="button"
-                    className="primary-button"
+                    className="primary-button show-more-button"
                     onClick={() =>
                       setVisibleCount((current) =>
                         current + ARTICLES_PER_PAGE
                       )
                     }
                   >
-                    Show More Articles
+                    Load more stories <span aria-hidden="true">↓</span>
                   </button>
                 </div>
               )}
             </>
           ) : (
             <div className="empty-state">
-              <h3>No articles found</h3>
-
-              <p>
-                Try another search term or category.
-              </p>
+              <h3>No stories found</h3>
+              <p>Try another search term or choose a different topic.</p>
 
               <button
                 type="button"
+                className="primary-button"
                 onClick={() => {
                   setSearch("");
                   setCategory("All");
@@ -305,27 +330,19 @@ function HomePage() {
           )}
         </section>
 
-        <section
-          className="newsletter-section"
-          id="newsletter"
-        >
+        <section className="newsletter-section" id="newsletter">
           <div className="container newsletter-inner">
-            <div>
-              <p className="eyebrow">Stay informed</p>
-
-              <h2>Get the best of EuroScope.</h2>
-
+            <div className="newsletter-copy">
+              <p className="eyebrow">Keep exploring</p>
+              <h2>Curiosity has no borders.</h2>
               <p>
-                Follow our latest European guides, sports analysis
-                and gaming stories.
+                Have a question, suggestion or story idea?
+                Get in touch with the EuroScope team.
               </p>
             </div>
 
-            <Link
-              className="primary-button"
-              to="/contact"
-            >
-              Contact EuroScope
+            <Link className="primary-button newsletter-button" to="/contact">
+              Contact EuroScope <span aria-hidden="true">→</span>
             </Link>
           </div>
         </section>
@@ -370,17 +387,12 @@ function NotFoundPage() {
       <main className="info-page">
         <div className="container info-page-inner">
           <div className="info-page-card">
-            <p className="eyebrow">
-              404 · Page not found
-            </p>
-
+            <p className="eyebrow">404 · PAGE NOT FOUND</p>
             <h1>We couldn't find that page.</h1>
-
             <p>
               The page may have moved, or the link may be incorrect.
               You can return to EuroScope and continue exploring.
             </p>
-
             <Link className="primary-button" to="/">
               Return home →
             </Link>
