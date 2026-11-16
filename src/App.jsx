@@ -14,6 +14,8 @@ import ArticlePage from "./pages/ArticlePage";
 import InfoPage from "./pages/InfoPage";
 import Seo from "./components/Seo";
 
+const ARTICLES_PER_PAGE = 9;
+
 function BrandLogo() {
   return (
     <Link className="logo brand-logo" to="/" aria-label="EuroScope home">
@@ -137,6 +139,7 @@ function SiteLayout() {
 function HomePage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(ARTICLES_PER_PAGE);
 
   const categories = useMemo(() => {
     const uniqueCategories = [
@@ -163,6 +166,15 @@ function HomePage() {
       return matchesCategory && matchesSearch;
     });
   }, [search, category]);
+
+  // Reset the visible article count when search or category changes.
+  useEffect(() => {
+    setVisibleCount(ARTICLES_PER_PAGE);
+  }, [search, category]);
+
+  const visibleArticles = filteredArticles.slice(0, visibleCount);
+
+  const hasMoreArticles = visibleCount < filteredArticles.length;
 
   return (
     <>
@@ -218,7 +230,9 @@ function HomePage() {
               <h2>Latest articles</h2>
             </div>
 
-            <p>{filteredArticles.length} articles</p>
+            <p>
+              Showing {visibleArticles.length} of {filteredArticles.length} articles
+            </p>
           </div>
 
           <div className="article-controls">
@@ -244,14 +258,32 @@ function HomePage() {
           </div>
 
           {filteredArticles.length > 0 ? (
-            <div className="articles-grid">
-              {filteredArticles.map((article) => (
-                <ArticleCard
-                  key={article.slug}
-                  article={article}
-                />
-              ))}
-            </div>
+            <>
+              <div className="articles-grid">
+                {visibleArticles.map((article) => (
+                  <ArticleCard
+                    key={article.slug}
+                    article={article}
+                  />
+                ))}
+              </div>
+
+              {hasMoreArticles && (
+                <div className="show-more-container">
+                  <button
+                    type="button"
+                    className="primary-button"
+                    onClick={() =>
+                      setVisibleCount((current) =>
+                        current + ARTICLES_PER_PAGE
+                      )
+                    }
+                  >
+                    Show More Articles
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="empty-state">
               <h3>No articles found</h3>

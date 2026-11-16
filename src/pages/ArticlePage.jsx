@@ -19,6 +19,46 @@ function formatDate(date) {
   });
 }
 
+function getRelatedArticles(article) {
+  const sourceText = `${article.title || ""} ${article.description || ""}`
+    .toLowerCase();
+
+  const keywords = [
+    "gaming", "gta", "game", "esports", "streaming", "pubg",
+    "europe", "european", "eu", "football", "sports",
+    "nvidia", "technology", "career", "job", "travel",
+    "tourism", "migration", "student", "university"
+  ];
+
+  const relevantKeywords = keywords.filter((word) =>
+    sourceText.includes(word)
+  );
+
+  return articles
+    .filter((item) => item.slug !== article.slug)
+    .map((item) => {
+      const text = `${item.title || ""} ${item.description || ""}`
+        .toLowerCase();
+
+      let score = 0;
+
+      if (item.category === article.category) {
+        score += 3;
+      }
+
+      relevantKeywords.forEach((word) => {
+        if (text.includes(word)) {
+          score += 2;
+        }
+      });
+
+      return { item, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((result) => result.item);
+}
+
 function ArticlePage() {
   const { slug } = useParams();
 
@@ -51,23 +91,7 @@ function ArticlePage() {
     );
   }
 
-  // Recommend articles from the same category first.
-  const sameCategoryArticles = articles.filter(
-    (item) =>
-      item.slug !== article.slug &&
-      item.category === article.category
-  );
-
-  const otherCategoryArticles = articles.filter(
-    (item) =>
-      item.slug !== article.slug &&
-      item.category !== article.category
-  );
-
-  const relatedArticles = [
-    ...sameCategoryArticles,
-    ...otherCategoryArticles,
-  ].slice(0, 3);
+  const relatedArticles = getRelatedArticles(article);
 
   const author = article.author || "EuroScope Editorial Team";
   const publishedDate = formatDate(article.publishedAt);
@@ -87,6 +111,7 @@ function ArticlePage() {
 
       <div className="article-meta">
         <span className="category">{article.category}</span>
+
         {article.readTime && (
           <span>{article.readTime}</span>
         )}
@@ -128,7 +153,6 @@ function ArticlePage() {
         </figure>
       )}
 
-      {/* Article content */}
       <div className="article-body">
         {(article.sections || []).map((section, index) => (
           <section key={`${article.slug}-${index}`}>
@@ -136,7 +160,6 @@ function ArticlePage() {
               <h2>{section.heading}</h2>
             )}
 
-            {/* Support both paragraphs and body formats */}
             {Array.isArray(section.paragraphs) ? (
               section.paragraphs.map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex}>{paragraph}</p>
@@ -148,7 +171,6 @@ function ArticlePage() {
         ))}
       </div>
 
-      {/* Related articles */}
       {relatedArticles.length > 0 && (
         <section className="article-end">
           <p className="eyebrow">Related reading</p>
@@ -156,19 +178,8 @@ function ArticlePage() {
           <h2>Continue exploring EuroScope</h2>
 
           <p>
-            Discover more useful guides, insights and stories
-            related to this topic.
+            Explore more articles and guides connected to this topic.
           </p>
-
-          <ul className="related-text-links">
-            {relatedArticles.map((item) => (
-              <li key={item.slug}>
-                <Link to={`/article/${item.slug}`}>
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
 
           <div className="articles-grid">
             {relatedArticles.map((relatedArticle) => (
