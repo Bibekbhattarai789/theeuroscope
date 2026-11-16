@@ -122,7 +122,7 @@ function Seo({
 
     canonical.href = pageUrl;
 
-    // Existing structured data scripts
+    // Structured data scripts
     let articleScript = document.getElementById(
       "euroscope-article-schema"
     );
@@ -132,31 +132,39 @@ function Seo({
     );
 
     if (article && !noindex) {
-      // Article schema
+      // Determine article author
       const isNamedAuthor =
         Boolean(article.author) &&
         article.author !== "EuroScope Editorial Team";
 
+      // Article structured data
       const articleSchema = {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: article.title,
         description: article.description,
         image: [pageImage],
+
         author: {
           "@type": isNamedAuthor ? "Person" : "Organization",
           name: authorName,
+          ...(!isNamedAuthor && {
+            url: `${SITE_URL}/about`,
+          }),
         },
+
         publisher: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#organization`,
           name: SITE_NAME,
           url: SITE_URL,
         },
+
         mainEntityOfPage: {
           "@type": "WebPage",
           "@id": pageUrl,
         },
+
         url: pageUrl,
         inLanguage: "en",
       };
@@ -182,10 +190,11 @@ function Seo({
 
       articleScript.textContent = JSON.stringify(articleSchema);
 
-      // Breadcrumb schema
+      // Breadcrumb structured data
       const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+
         itemListElement: [
           {
             "@type": "ListItem",
