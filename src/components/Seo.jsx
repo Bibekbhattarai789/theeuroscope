@@ -1,9 +1,10 @@
 
 import { useEffect } from "react";
 
-const SITE_URL = "https://euroscope.site";
+const SITE_URL = "https://www.euroscope.site";
 const SITE_NAME = "EuroScope";
-const AUTHOR_URL = "https://euroscope.site/about";
+const AUTHOR_URL = "https://www.euroscope.site/about";
+
 const DEFAULT_DESCRIPTION =
   "Explore practical European guides, sports analysis and gaming stories on EuroScope";
 
@@ -39,7 +40,7 @@ function Seo({
     const pageDescription =
       description || DEFAULT_DESCRIPTION;
 
-    // Always use the preferred non-www domain
+    // Always use the preferred www domain.
     const pageUrl = `${SITE_URL}${window.location.pathname}`;
 
     const pageImage = article?.image
@@ -56,10 +57,10 @@ function Seo({
     const modifiedDate =
       formatSchemaDate(article?.updatedAt) || publishedDate;
 
-    // Update browser title
+    // Update browser title.
     document.title = pageTitle;
 
-    // Create or update meta tags
+    // Create or update meta tags.
     function setMeta(attribute, key, content) {
       let element = document.head.querySelector(
         `meta[${attribute}="${key}"]`
@@ -74,7 +75,7 @@ function Seo({
       element.setAttribute("content", content);
     }
 
-    // Basic SEO metadata
+    // Basic SEO metadata.
     setMeta("name", "description", pageDescription);
 
     setMeta(
@@ -83,7 +84,7 @@ function Seo({
       noindex ? "noindex, nofollow" : "index, follow"
     );
 
-    // Open Graph metadata
+    // Open Graph metadata.
     setMeta("property", "og:title", pageTitle);
     setMeta("property", "og:description", pageDescription);
     setMeta("property", "og:type", article ? "article" : "website");
@@ -107,13 +108,13 @@ function Seo({
       );
     }
 
-    // Twitter / X metadata
+    // Twitter / X metadata.
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", pageTitle);
     setMeta("name", "twitter:description", pageDescription);
     setMeta("name", "twitter:image", pageImage);
 
-    // Canonical URL
+    // Canonical URL.
     let canonical = document.head.querySelector(
       'link[rel="canonical"]'
     );
@@ -126,7 +127,7 @@ function Seo({
 
     canonical.href = pageUrl;
 
-    // Article structured data (Schema.org)
+    // Article structured data (Schema.org).
     let schemaScript = document.getElementById(
       "euroscope-article-schema"
     );
